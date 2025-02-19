@@ -1,4 +1,4 @@
-function rock(){
+/* function rock(){
   const randomnumber = Math.random();
   console.log(randomnumber);
   let computermove = " ";
@@ -84,4 +84,69 @@ function scissor(){
     result = "the match is Tie";
   }
   alert(`You picked Scissor, computer picked ${computermove} . ${result}`);
-}
+} */
+
+  function gameplay(playermove) {
+    const computermove = computeroption();
+    let result = " ";
+
+    if (playermove === "scissor") {
+      if(computermove === "rock"){
+        result = "You Loss the Game"; 
+      }
+      else if(computermove === "paper"){
+        result = "You Win the Game";
+      }
+      else {
+        result = "the match is Tie";
+      }
+      alert(`You picked ${playermove}, computer picked ${computermove} . ${result}`);
+      }
+      
+      else if (playermove === "paper"){
+        
+        if(computermove === "rock"){
+          result = "You Win the Game";
+          
+        }
+        else if(computermove === "paper"){
+          result = "the match is Tie";
+          
+        }
+        else {
+          result = "You Loss the Game";
+        }
+        alert(`You picked ${playermove}, computer picked ${computermove} . ${result}`);
+            }
+      
+      else if (playermove === "rock"){
+        if(computermove === "rock"){
+          result = "the match is Tie";
+        }
+        else if(computermove === "paper"){
+          result = "You Loss the Game";
+        }
+        else {
+          result = "You Win the Game";
+        }
+        alert(`You picked ${playermove}, computer picked ${computermove} . ${result}`);
+      }
+  }
+
+  function computeroption(){
+    const randomnumber = Math.random();
+    console.log(randomnumber);
+    let computermove = " ";
+    if ( randomnumber >=0 && randomnumber < 1/3){
+      computermove = "rock";
+    }
+    else if (randomnumber >=1/3 && randomnumber < 2/3 ){
+      computermove = "paper";
+    }
+    else {
+      computermove = "scissor";
+    }
+    console.log(computermove);
+    return computermove;
+
+  }
