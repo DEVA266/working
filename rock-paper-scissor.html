@@ -15,6 +15,13 @@
     <button onclick="gameplay('rock')">Rock</button>
     <button onclick="gameplay('paper')">paper</button>
     <button onclick="gameplay('scissor')">scissor</button>
+
+    <button onclick="
+      score.Wins = 0;
+      score.Loss = 0;
+      score.Tie = 0;
+      localStorage.removeItem('score');
+      ">Reset Button</button>
     <br>
     
   </body>
