@@ -91,6 +91,7 @@ function scissor(){
     Tie:0
   };
      
+
   /* the most useful function called default operator || 
   int his operator it consist of two operands ex a || b
   if a is true then a will be excueted, if a is false b will get exceuted
@@ -106,6 +107,7 @@ function scissor(){
     score:Tie=0
   };*/
 
+  
     function gameplay(playermove) {
     const computermove = computeroption();
     let result = " ";
@@ -123,7 +125,7 @@ function scissor(){
       }
       }
       
-      else if (playermove === "paper"){
+    else if (playermove === "paper"){
         
         if(computermove === "rock"){
           result = "You Win the Game";
@@ -138,7 +140,7 @@ function scissor(){
         }
             }
       
-      else if (playermove === "rock"){
+    else if (playermove === "rock"){
         if(computermove === "rock"){
           result = "the match is Tie";
         }
@@ -148,7 +150,8 @@ function scissor(){
         else {
           result = "You Win the Game";
         }
-      }
+    }
+
       if (result === "You Win the Game"){
         score.Wins += 1;
       }
@@ -160,6 +163,8 @@ function scissor(){
       }
 
       localStorage.setItem("score" , JSON.stringify(score));
+
+      document.querySelector('jsresult').innerHTML = result;
 
       alert(`You picked ${playermove}, computer picked ${computermove} . ${result}
 Wins : ${score.Wins}  Loss : ${score.Loss}  Tie : ${score.Tie}`);
@@ -180,5 +185,6 @@ Wins : ${score.Wins}  Loss : ${score.Loss}  Tie : ${score.Tie}`);
     }
     console.log(computermove);
     return computermove;
-
   }
+
+  

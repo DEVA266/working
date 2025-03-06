@@ -1,0 +1,10 @@
+this notes is helping to remember certain sort of the things that i learn in the js tutorial by super simple dev
+
+documnet.body.innerHTML = "string_to_be_entered";
+this line in the js code will remove all the elements in the body of the html and display only the string present inside the double notations (" ")
+
+the documnet object is releats with the documnet of the page , so using documnet object we can able to change the properties of the page
+example : documnet.title = ' the title to be changed ' now the title of the webpage is changed
+the documnet object represents the page ( documnet object model  ) DOM 
+
+the documnet.querySelector('.class_attribute_name') is used to select the class from the html elements
