@@ -6,13 +6,30 @@
   <title>Document</title>
 </head>
 <body>
+  <h2>youtube subscribe button</h2>
+
+  <button onclick="subscribe();" class="sub-button" >subscribe</button>
+
   <h2>Amazon Shipping Calculator</h2><br>
+   
   <input placeholder="cost of order" class="cost-calculator">
+
   <button onclick="
    calculate();
   ">Calculate</b0utton>
 
   <script>
+    function subscribe(){
+      const sub = document.querySelector('.sub-button');
+
+      if (sub.innertext === subscribe){
+        sub.innerhtml = subscribed;
+      }
+      else {
+        sub.innerhtml = subscribe;
+      }
+    }
+
     function calculate() {
       const inputElement = document.querySelector('.cost-calculator');
     }
