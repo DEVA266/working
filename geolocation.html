@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Geofence Check</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f4f8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .card {
+      background: white;
+      padding: 20px 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 5px;
+      background: #007bff;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <h2>Check Your Location</h2>
+  <p>Click the button to check if you're inside the area</p>
+  <button onclick="checkLocation()">Check Location</button>
+  <div id="result"></div>
+</div>
+
+<script>
+  // Predefined geofence center (e.g., your office or campus)
+  const geofence = {
+    lat: 11.077578,    // Example latitude
+    lon: 77.142742,  // Example longitude
+    radius: 1000   // Radius in meters
+  };
+
+  // Function to convert degrees to radians
+  const toRad = x => x * Math.PI / 180;
+
+  // Haversine formula to calculate distance between two coordinates
+  function getDistance(lat1, lon1, lat2, lon2) {
+    const R = 6371e3; // Earth radius in meters
+    const dLat = toRad(lat2 - lat1);
+    const dLon = toRad(lon2 - lon1);
+    const a =
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
+      Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    return R * c;
+  }
+
+  // Main function to check location
+  function checkLocation() {
+    const resultDiv = document.getElementById("result");
+
+    if (!navigator.geolocation) {
+      resultDiv.textContent = "Geolocation is not supported by your browser.";
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(position => {
+      const userLat = position.coords.latitude;
+      const userLon = position.coords.longitude;
+
+      const distance = getDistance(userLat, userLon, geofence.lat, geofence.lon);
+
+      if (distance <= geofence.radius) {
+        resultDiv.textContent = "✅ You are INSIDE the college(KPR).";
+        resultDiv.style.color = "green";
+      } else {
+        resultDiv.textContent = "❌ You are OUTSIDE the college(KPR).";
+        resultDiv.style.color = "red";
+      }
+    }, error => {
+      resultDiv.textContent = `Error: ${error.message}`;
+      resultDiv.style.color = "red";
+    });
+  }
+</script>
+
+</body>
+</html>
