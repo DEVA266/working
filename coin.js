@@ -8,6 +8,7 @@ function flip(){
   else {
     answer = "TAIL";
   }
+  
   console.log(answer);
   let result = " ";
   if (guess === answer){
